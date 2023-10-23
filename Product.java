@@ -3,9 +3,9 @@ package Practic;
 public class Product extends Menu{
 
     public String category;
-    private double price;
+    private int price;
 
-    public Product(String category, String name, String description, double price) {
+    public Product(String category, String name, String description, int price) {
         super(name, description);
         this.price = price;
         this.category = category;
@@ -19,11 +19,11 @@ public class Product extends Menu{
         this.category = category;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 }

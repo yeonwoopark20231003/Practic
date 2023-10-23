@@ -40,7 +40,8 @@ public class Main {
         products.add(sprite);
         products.add(lemonade);
 
-        ArrayList<Product> cart = new ArrayList<>();
+        //ArrayList<Product> cart = new ArrayList<>();
+        Cart cart = new Cart();
 
 
         //메뉴 선택, 세부메뉴 출력
@@ -67,6 +68,7 @@ public class Main {
 
             List<Product> selectedList = new ArrayList<>();
 
+            int sum = 0;
 
             if (choice<=2){
                 String category = menuList.get(choice - 1).getName(); //커피 or 탄산 출력
@@ -83,18 +85,21 @@ public class Main {
                     System.out.println(index + "." + selectedList.get(i).getName() + " | " +
                             selectedList.get(i).getPrice() + "원  | " +
                             selectedList.get(i).getDescription());
+
                 }
 
             } else if (choice==3) {
-                //장바구니 전체 프린트
-                System.out.println("장바구니 목록:");
-                for (int a = 0; a < cart.size(); a++) {
-                    System.out.println(cart.get(a).getName()+" | "+cart.get(a).getPrice()+"원");
-                    //총 금액 추가
-                }
+                //장바구니 출력
+                List<Product> cartItem =cart.getCartItem();
+                System.out.println("주문 메뉴:");
+                System.out.println(cart.showCart());
+
+                System.out.println("");
+                int totalPrice =cart.totalCartPrice();
+                System.out.println("총 결제금액:"+totalPrice+"원");
 
             }else if(choice==4){
-                cart.clear();
+                cart.clearCart();
                 System.out.println("주문이 취소되었습니다.\n");
                 continue;
             }
@@ -126,9 +131,9 @@ public class Main {
                     int select = sc.nextInt();
                     if (select == 1) {
                         // 장바구니 담기
-                        cart.add(selectedList.get(c2));
+                       // cart.add(selectedList.get(c2));
+                        cart.addCart(selectedList.get(c2));
                         System.out.println(selectedList.get(c2).getName() + "가 장바구니에 추가되었습니다.\n");
-
 
 
 
